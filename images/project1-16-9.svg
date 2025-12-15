@@ -1,7 +1,0 @@
-<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="450" fill="#f1f5f9"/>
-  <rect x="50" y="50" width="700" height="350" fill="#cbd5e1" rx="8"/>
-  <text x="400" y="200" font-family="Arial, sans-serif" font-size="32" fill="#64748b" text-anchor="middle" font-weight="bold">Project 1</text>
-  <text x="400" y="240" font-family="Arial, sans-serif" font-size="18" fill="#94a3b8" text-anchor="middle">16:9 Aspect Ratio</text>
-  <text x="400" y="270" font-family="Arial, sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">Project Screenshot Placeholder</text>
-</svg>
