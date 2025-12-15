@@ -2,7 +2,7 @@
 
 A modern, responsive portfolio website built with HTML5, CSS3, and vanilla JavaScript.
 
-LINK : https://haciyev12.github.io/site1101/
+LINK: https://haciyev12.github.io/site1101/
 
 ## Features
 
@@ -20,16 +20,20 @@ Website/
 ├── pages/
 │   ├── about.html      # About page
 │   ├── projects.html   # Projects page
-│   └── resume.html     # Resume page
 ├── css/
 │   └── styles.css      # Main stylesheet
+    └── dark-mode.css   # Applying dark and light mode
+    └── responsive.css  # Adapting responsive design 
 ├── js/
 │   └── main.js         # JavaScript functionality
+│   └── projects.js
+│   └── theme-toggle.js
 ├── images/
 │   ├── profile-placeholder.jpg
-│   ├── project1.jpg
-│   ├── project2.jpg
-│   └── project3.jpg
+│   ├── Me.jpg
+│   ├── and gate.jpg
+│   └── not gate.jpg
+│   └── Or gate.jpg
 └── README.md
 ```
 
@@ -52,31 +56,7 @@ Website/
 - Technology tags
 - Includes Project 1 as required
 
-### Resume Page (`pages/resume.html`)
-- Professional summary
-- Work experience
-- Education
-- Technical skills
-- Certifications
 
-## Customization
-
-### Update Social Media Links
-Edit the footer section in each HTML file to update:
-- GitHub profile link
-- Codecademy profile link
-- LinkedIn profile link
-- Twitter profile link
-- GitHub repository link
-
-### Replace Placeholder Images
-1. Replace `images/profile-placeholder.jpg` with your profile photo
-2. Replace `images/project1.jpg`, `project2.jpg`, `project3.jpg` with your project screenshots
-
-### Update Content
-- Edit the HTML files to personalize your information
-- Modify `css/styles.css` to change colors, fonts, and styling
-- Update project details in `pages/projects.html`
 
 ## Browser Support
 
