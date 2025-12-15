@@ -1,0 +1,349 @@
+/* ============================================
+   Dark Mode Styles
+   ============================================ */
+
+/* ============================================
+   Dark Mode Color Variables
+   ============================================ */
+
+/* Dark Mode Overrides */
+html.dark-mode,
+html.dark-mode body {
+    /* Override existing CSS variables for dark mode */
+    --bg-light: #1a1d2e;
+    --bg-white: #0f172a;
+    --text-dark: #ffffff;
+    --text-light: #f1f5f9;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    /* Keep primary colors but can adjust if needed */
+    --primary-color: #3b82f6; /* Lighter blue for dark mode */
+    --primary-dark: #2563eb;
+}
+
+/* Body and main content - uses existing CSS variables */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark-mode body {
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+}
+
+.main-content {
+    transition: background-color 0.3s ease;
+}
+
+/* Navigation Bar */
+.navbar {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+html.dark-mode .navbar {
+    background-color: var(--bg-white);
+    border-bottom-color: var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.nav-logo {
+    color: var(--primary-color);
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+html.dark-mode .nav-link {
+    color: var(--text-dark);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+/* Theme Toggle Button */
+/* Theme Toggle Button */
+.theme-toggle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    margin-left: 1rem;
+    padding: 0;
+}
+
+.theme-toggle:hover {
+    transform: rotate(15deg) scale(1.1);
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.theme-toggle:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.theme-toggle i {
+    transition: transform 0.5s ease, opacity 0.3s ease;
+    position: absolute;
+    font-size: 1.1rem;
+}
+
+.theme-toggle .fa-sun {
+    transform: rotate(0deg);
+    opacity: 0;
+}
+
+.theme-toggle .fa-moon {
+    transform: rotate(0deg);
+    opacity: 1;
+}
+
+html.dark-mode .theme-toggle {
+    background-color: var(--bg-white);
+    border-color: var(--border-color);
+    color: var(--text-dark);
+}
+
+html.dark-mode .theme-toggle .fa-sun {
+    transform: rotate(360deg);
+    opacity: 1;
+}
+
+html.dark-mode .theme-toggle .fa-moon {
+    transform: rotate(-360deg);
+    opacity: 0;
+}
+
+html.dark-mode .theme-toggle:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Cards and Sections - uses existing variables */
+.feature-card,
+.project-card,
+.qualification-card,
+.activity-card,
+.about-card,
+.skill-category-card,
+.resume-section-item {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+html.dark-mode .feature-card,
+html.dark-mode .project-card,
+html.dark-mode .qualification-card,
+html.dark-mode .activity-card,
+html.dark-mode .about-card,
+html.dark-mode .skill-category-card,
+html.dark-mode .resume-section-item {
+    background-color: var(--bg-white);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Text Colors - uses existing variables, no override needed */
+/* Dark mode automatically uses updated --text-dark and --text-light */
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Hero Section - uses existing variables */
+html.dark-mode .hero-section {
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+}
+
+/* Sections with Background - uses existing variables */
+html.dark-mode .qualifications-section,
+html.dark-mode .activities-section {
+    background-color: var(--bg-light);
+}
+
+/* Footer - uses existing variables */
+html.dark-mode .footer {
+    background: linear-gradient(135deg, #0f172a 0%, #1a1d2e 100%);
+    border-top-color: var(--border-color);
+}
+
+html.dark-mode .footer-section h3 {
+    color: var(--text-dark);
+}
+
+html.dark-mode .footer-links a {
+    color: var(--text-light);
+}
+
+html.dark-mode .footer-links a:hover {
+    color: var(--text-dark);
+}
+
+/* Social Links */
+html.dark-mode .social-link {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-color);
+}
+
+/* Tags - uses existing variables */
+html.dark-mode .tag {
+    background-color: var(--bg-light);
+    border-color: var(--border-color);
+}
+
+/* Modal */
+html.dark-mode .modal-content {
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+}
+
+html.dark-mode .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Lightbox */
+html.dark-mode .lightbox {
+    background-color: rgba(0, 0, 0, 0.98);
+}
+
+/* Timeline */
+html.dark-mode .timeline-content {
+    background-color: var(--bg-white);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Input Fields */
+html.dark-mode input,
+html.dark-mode textarea,
+html.dark-mode select {
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+    border-color: var(--border-color);
+}
+
+/* Scrollbar (Webkit browsers) */
+html.dark-mode ::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+
+html.dark-mode ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+
+html.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Images maintain visibility */
+html.dark-mode img {
+    opacity: 0.95;
+}
+
+/* Skip link - no change needed, uses primary color */
+
+/* Project Gallery */
+html.dark-mode .gallery-item {
+    border-color: var(--border-color);
+    background-color: var(--bg-light);
+}
+
+/* Video Wrapper */
+html.dark-mode .video-wrapper {
+    background-color: var(--bg-light);
+}
+
+/* Filter Buttons */
+html.dark-mode .filter-btn {
+    background-color: var(--bg-white);
+    border-color: var(--border-color);
+    color: var(--text-dark);
+}
+
+html.dark-mode .filter-btn:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(37, 99, 235, 0.15);
+}
+
+html.dark-mode .filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Repository Link */
+html.dark-mode .repo-link {
+    background-color: rgba(37, 99, 235, 0.15);
+    border-color: rgba(37, 99, 235, 0.4);
+    color: var(--primary-color);
+}
+
+html.dark-mode .repo-link:hover {
+    background-color: rgba(37, 99, 235, 0.25);
+    border-color: var(--primary-color);
+}
+
+/* Education Items - uses existing variables */
+
+/* Skills List */
+html.dark-mode .skills-list li {
+    color: var(--text-light);
+    border-color: var(--border-color);
+}
+
+html.dark-mode .skills-list li:hover {
+    color: var(--primary-color);
+}
+
+/* Activity Items - uses existing variables */
+
+/* Resume Section - uses existing variables */
+
+/* Project Overlay - no change needed */
+
+/* Profile Image Container */
+html.dark-mode .profile-image-container::before {
+    background: linear-gradient(45deg, var(--primary-color), #60a5fa, var(--primary-color));
+}
+
+/* About Image */
+html.dark-mode .about-image-container {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+

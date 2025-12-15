@@ -10,7 +10,7 @@
    Base Responsive Rules (All Devices)
    ============================================ */
 
-* {
+   * {
     box-sizing: border-box;
 }
 
@@ -125,6 +125,21 @@ button, .btn, a.btn, .nav-toggle, .social-link, .filter-btn {
         display: flex;
         min-width: 44px;
         min-height: 44px;
+    }
+
+    .nav-theme-toggle {
+        margin-left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 1rem 0;
+        border-top: 1px solid var(--border-color);
+        margin-top: 0.5rem;
+    }
+
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
     }
 
     /* Hero Section - Mobile */
@@ -723,4 +738,3 @@ button, .btn, a.btn, .nav-toggle, .social-link, .filter-btn {
         padding: 0;
     }
 }
-
