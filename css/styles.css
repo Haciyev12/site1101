@@ -36,10 +36,22 @@ body {
     padding-top: 70px; /* Account for fixed navbar */
 }
 
+/* Responsive Images - All images scale properly */
 img {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+/* Ensure all images are responsive */
+img, 
+picture, 
+video, 
+iframe, 
+embed, 
+object {
+    max-width: 100%;
+    height: auto;
 }
 
 a {
@@ -456,6 +468,7 @@ ul {
    Buttons
    ============================================ */
 
+/* Touch-friendly buttons (minimum 44x44px) */
 .btn {
     display: inline-block;
     padding: 0.75rem 2rem;
@@ -465,6 +478,9 @@ ul {
     cursor: pointer;
     border: none;
     font-size: 1rem;
+    min-height: 44px; /* Touch-friendly minimum */
+    min-width: 44px;
+    line-height: 1.5;
 }
 
 .btn-primary {
@@ -1675,9 +1691,11 @@ ul {
 
 /* ============================================
    Responsive Design
+   Note: All responsive styles have been moved to responsive.css
    ============================================ */
 
-@media (max-width: 768px) {
+/* Legacy media query - kept for backward compatibility, but responsive.css takes precedence */
+@media (max-width: 767px) {
     .nav-menu {
         position: fixed;
         left: -100%;
