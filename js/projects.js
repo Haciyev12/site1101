@@ -65,15 +65,99 @@ if (filterButtons.length > 0) {
     });
 }
 
-// Modal functionality
-const modal = document.getElementById('projectModal');
-const modalClose = document.querySelector('.modal-close');
-const viewDetailsButtons = document.querySelectorAll('.view-details-btn, .project-view-btn');
+// Modal variables (global scope so functions can access them)
+let modal;
+let modalClose;
+
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', function() {
+    initializeProjects();
+});
+
+function initializeProjects() {
+    // Modal functionality
+    modal = document.getElementById('projectModal');
+    modalClose = document.querySelector('.modal-close');
+    const viewDetailsButtons = document.querySelectorAll('.view-details-btn, .project-view-btn');
+
+    if (!modal) {
+        console.error('Modal element not found');
+        return;
+    }
+
+    // Event listeners for opening modal
+    if (viewDetailsButtons.length > 0) {
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const projectId = button.getAttribute('data-project');
+                if (projectId) {
+                    openModal(projectId);
+                } else {
+                    console.error('No project ID found on button');
+                }
+            });
+        });
+    } else {
+        console.warn('No view details buttons found');
+    }
+
+    // Close modal events
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    // Close modal when clicking overlay
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.classList.contains('modal-overlay')) {
+                closeModal();
+            }
+        });
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Trap focus within modal
+    modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            const focusableElements = modal.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (e.shiftKey && document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement.focus();
+            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement.focus();
+            }
+        }
+    });
+}
 
 // Open modal
 function openModal(projectId) {
+    if (!modal) {
+        console.error('Modal not initialized. Make sure DOM is loaded.');
+        return;
+    }
+    
     const project = projectsData[projectId];
-    if (!project) return;
+    if (!project) {
+        console.error(`Project with ID ${projectId} not found in projectsData`);
+        return;
+    }
+    
+    console.log('Opening modal for project:', projectId, project.title);
     
     // Populate modal with project data
     document.getElementById('modalTitle').textContent = project.title;
@@ -103,9 +187,11 @@ function openModal(projectId) {
         modalFeatures.appendChild(li);
     });
     
-    // Set links
- //   document.getElementById('modalLiveLink').href = project.liveLink;
-   // document.getElementById('modalGithubLink').href = project.githubLink;
+    // Set links (if they exist)
+    const modalLiveLink = document.getElementById('modalLiveLink');
+    const modalGithubLink = document.getElementById('modalGithubLink');
+    if (modalLiveLink) modalLiveLink.href = project.liveLink;
+    if (modalGithubLink) modalGithubLink.href = project.githubLink;
     
     // Populate gallery
     const galleryGrid = document.getElementById('galleryGrid');
@@ -162,15 +248,23 @@ function openModal(projectId) {
     const modalVideoSection = document.getElementById('modalVideoSection');
     if (project.videoId) {
         videoWrapper.innerHTML = `
-            <iframe 
-                src="https://www.youtube.com/embed/${project.videoId}" 
-                title="Project Demo Video"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                class="youtube-iframe"
-                loading="lazy">
-            </iframe>
+            <a href="https://www.youtube.com/watch?v=${project.videoId}" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="video-thumbnail-link">
+                <img 
+                    src="https://img.youtube.com/vi/${project.videoId}/maxresdefault.jpg" 
+                    alt="Video Thumbnail"
+                    style="width: 100%; border-radius: 12px;"
+                    onerror="this.src='https://img.youtube.com/vi/${project.videoId}/hqdefault.jpg'"
+                >
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    <svg width="68" height="48" viewBox="0 0 68 48">
+                        <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                        <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                    </svg>
+                </div>
+            </a>
         `;
         modalVideoSection.style.display = 'block';
     } else {
@@ -188,7 +282,9 @@ function openModal(projectId) {
     document.body.style.overflow = 'hidden';
     
     // Focus management
-    modalClose.focus();
+    if (modalClose) {
+        modalClose.focus();
+    }
 }
 
 // Lightbox functionality for gallery images
@@ -266,61 +362,9 @@ function openLightbox(src, alt, images, currentIndex) {
 
 // Close modal
 function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// Event listeners for opening modal
-viewDetailsButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const projectId = button.getAttribute('data-project');
-        openModal(projectId);
-    });
-});
-
-// Close modal events
-if (modalClose) {
-    modalClose.addEventListener('click', closeModal);
-}
-
-// Close modal when clicking overlay
-if (modal) {
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target.classList.contains('modal-overlay')) {
-            closeModal();
-        }
-    });
-}
-
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
     }
-});
+}
 
-// Trap focus within modal
-const focusableElements = modal.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-);
-const firstFocusable = focusableElements[0];
-const lastFocusable = focusableElements[focusableElements.length - 1];
-
-modal.addEventListener('keydown', (e) => {
-    if (!modal.classList.contains('active')) return;
-    
-    if (e.key === 'Tab') {
-        if (e.shiftKey) {
-            if (document.activeElement === firstFocusable) {
-                e.preventDefault();
-                lastFocusable.focus();
-            }
-        } else {
-            if (document.activeElement === lastFocusable) {
-                e.preventDefault();
-                firstFocusable.focus();
-            }
-        }
-    }
-});

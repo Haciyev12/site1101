@@ -1467,12 +1467,50 @@ ul {
 .video-wrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
+    border-radius: 12px;
     overflow: hidden;
-    border-radius: 0.5rem;
     background-color: var(--bg-light);
     box-shadow: var(--shadow-md);
+}
+
+.video-thumbnail-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.video-thumbnail-link:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.video-thumbnail-link img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.video-thumbnail-link > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.video-thumbnail-link svg {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.video-thumbnail-link:hover svg {
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 .youtube-iframe {
