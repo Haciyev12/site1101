@@ -33,6 +33,7 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--bg-white);
+    padding-top: 70px; /* Account for fixed navbar */
 }
 
 img {
@@ -57,16 +58,57 @@ ul {
 }
 
 /* ============================================
+   Skip Link (Accessibility)
+   ============================================ */
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 10000;
+    font-weight: 600;
+    border-radius: 0 0 4px 0;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ============================================
    Navigation
    ============================================ */
 
 .navbar {
     background-color: var(--bg-white);
     box-shadow: var(--shadow-sm);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 1000;
     padding: 1rem 0;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-container {
@@ -82,6 +124,19 @@ ul {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    transition: var(--transition);
+    outline: none;
+}
+
+.nav-logo:hover {
+    color: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+.nav-logo:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
 
 .nav-menu {
@@ -95,32 +150,57 @@ ul {
     font-weight: 500;
     transition: var(--transition);
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    display: block;
+    outline: none;
 }
 
 .nav-link:hover,
 .nav-link.active {
     color: var(--primary-color);
+    background-color: rgba(37, 99, 235, 0.1);
+}
+
+.nav-link:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+    background-color: rgba(37, 99, 235, 0.1);
 }
 
 .nav-link.active::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
     height: 2px;
     background-color: var(--primary-color);
+    border-radius: 2px;
 }
 
 .nav-toggle {
     display: none;
     flex-direction: column;
     background: none;
-    border: none;
+    border: 2px solid transparent;
     cursor: pointer;
     padding: 0.5rem;
     gap: 4px;
+    border-radius: 4px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.nav-toggle:hover {
+    background-color: var(--bg-light);
+}
+
+.nav-toggle:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+    border-color: var(--primary-color);
 }
 
 .nav-toggle span {
@@ -129,6 +209,19 @@ ul {
     background-color: var(--text-dark);
     transition: var(--transition);
     border-radius: 2px;
+    display: block;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* ============================================
@@ -732,10 +825,12 @@ ul {
         background-color: var(--bg-white);
         width: 100%;
         text-align: center;
-        transition: 0.3s;
+        transition: left 0.3s ease;
         box-shadow: var(--shadow-lg);
         padding: 2rem 0;
         gap: 0;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -743,23 +838,32 @@ ul {
     }
 
     .nav-item {
-        margin: 1rem 0;
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 0;
+    }
+
+    .nav-link:focus {
+        outline-offset: -2px;
+    }
+
+    .nav-link.active::after {
+        display: none;
+    }
+
+    .nav-link.active {
+        background-color: rgba(37, 99, 235, 0.15);
+        font-weight: 600;
     }
 
     .nav-toggle {
         display: flex;
-    }
-
-    .nav-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .nav-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .nav-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
     }
 
     .hero-title {

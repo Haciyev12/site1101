@@ -1,27 +1,114 @@
-// Mobile Navigation Toggle
+// Mobile Navigation Toggle with Keyboard Support
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 
 if (navToggle && navMenu) {
+    const toggleMenu = (isOpen) => {
+        const isActive = navMenu.classList.contains('active');
+        if (isOpen === undefined) {
+            isOpen = !isActive;
+        }
+        
+        if (isOpen) {
+            navMenu.classList.add('active');
+            navToggle.classList.add('active');
+            navToggle.setAttribute('aria-expanded', 'true');
+            // Focus first menu item when opening
+            const firstLink = navMenu.querySelector('.nav-link');
+            if (firstLink) {
+                setTimeout(() => firstLink.focus(), 100);
+            }
+        } else {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+    };
+
+    // Click handler
     navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
+        toggleMenu();
+    });
+
+    // Keyboard support for toggle button
+    navToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
+        }
     });
 
     // Close menu when clicking on a link
     const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
+    navLinks.forEach((link, index) => {
         link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+            toggleMenu(false);
         });
+
+        // Keyboard navigation with arrow keys
+        link.addEventListener('keydown', (e) => {
+            const isMenuOpen = navMenu.classList.contains('active');
+            
+            if (!isMenuOpen) return;
+
+            switch(e.key) {
+                case 'ArrowDown':
+                    e.preventDefault();
+                    const nextLink = navLinks[index + 1] || navLinks[0];
+                    nextLink.focus();
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    const prevLink = navLinks[index - 1] || navLinks[navLinks.length - 1];
+                    prevLink.focus();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    navLinks[0].focus();
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    navLinks[navLinks.length - 1].focus();
+                    break;
+            }
+        });
+    });
+
+    // Close menu with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            toggleMenu(false);
+            navToggle.focus();
+        }
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+            toggleMenu(false);
+        }
+    });
+
+    // Trap focus within menu when open on mobile
+    navMenu.addEventListener('keydown', (e) => {
+        if (!navMenu.classList.contains('active')) return;
+
+        const focusableElements = navMenu.querySelectorAll('a[href], button');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
         }
     });
 }
