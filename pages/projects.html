@@ -148,23 +148,23 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <!-- About Section -->
                 <div class="footer-section">
-                    <h3>Connect With Me</h3>
-                    <div class="social-links">
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://codecademy.com" target="_blank" rel="noopener noreferrer" aria-label="Codecademy">
-                            <i class="fas fa-graduation-cap"></i>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
+                    <h3>About</h3>
+                    <p class="footer-about-text">
+                        A passionate web developer creating modern, responsive, and user-friendly web experiences. 
+                        Explore my projects and connect with me through the links below.
+                    </p>
+                    <div class="repo-link-wrapper">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link">
+                            <i class="fab fa-github"></i> 
+                            <span>View Source Code</span>
+                            <i class="fas fa-external-link-alt repo-external-icon"></i>
                         </a>
                     </div>
                 </div>
+
+                <!-- Quick Links Section -->
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
@@ -174,16 +174,37 @@
                         <li><a href="resume.html">Resume</a></li>
                     </ul>
                 </div>
+
+                <!-- Connect Section -->
                 <div class="footer-section">
-                    <h3>Repository</h3>
-                    <p>View the source code for this website:</p>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link">
-                        <i class="fab fa-github"></i> GitHub Repository
-                    </a>
+                    <h3>Connect</h3>
+                    <p class="footer-connect-text">Follow me on social media and connect with me:</p>
+                    <div class="social-links">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-link github">
+                            <i class="fab fa-github"></i>
+                            <span class="sr-only">GitHub</span>
+                        </a>
+                        <a href="https://codecademy.com" target="_blank" rel="noopener noreferrer" aria-label="Codecademy Profile" class="social-link codecademy">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="sr-only">Codecademy</span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            <span class="sr-only">LinkedIn</span>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile" class="social-link twitter">
+                            <i class="fab fa-twitter"></i>
+                            <span class="sr-only">Twitter</span>
+                        </a>
+                        <a href="mailto:your.email@example.com" aria-label="Email" class="social-link email">
+                            <i class="fas fa-envelope"></i>
+                            <span class="sr-only">Email</span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Portfolio. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> Portfolio. All rights reserved.</p>
             </div>
         </div>
     </footer>
