@@ -28,7 +28,7 @@ const projectsData = {
                 alt: "Not gate Circuit"
             }
         ],
-        videoId: "1lg_IvSnKBo&t=2s", // Placeholder YouTube video ID
+        videoId: "1lg_IvSnKBo&t", // Placeholder YouTube video ID
         liveLink: "#",
         githubLink: "#"
     }
@@ -104,7 +104,8 @@ function openModal(projectId) {
     });
     
     // Set links
-
+    document.getElementById('modalLiveLink').href = project.liveLink;
+    document.getElementById('modalGithubLink').href = project.githubLink;
     
     // Populate gallery
     const galleryGrid = document.getElementById('galleryGrid');
