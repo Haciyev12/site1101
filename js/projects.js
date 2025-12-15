@@ -28,7 +28,7 @@ const projectsData = {
                 alt: "Not gate Circuit"
             }
         ],
-        videoId: "1lg_IvSnKBo&t", // Placeholder YouTube video ID
+        videoId: "1lg_IvSnKBo",
         liveLink: "#",
         githubLink: "#"
     }
@@ -104,8 +104,8 @@ function openModal(projectId) {
     });
     
     // Set links
-    document.getElementById('modalLiveLink').href = project.liveLink;
-    document.getElementById('modalGithubLink').href = project.githubLink;
+ //   document.getElementById('modalLiveLink').href = project.liveLink;
+   // document.getElementById('modalGithubLink').href = project.githubLink;
     
     // Populate gallery
     const galleryGrid = document.getElementById('galleryGrid');
@@ -163,7 +163,7 @@ function openModal(projectId) {
     if (project.videoId) {
         videoWrapper.innerHTML = `
             <iframe 
-                src="https://www.youtube.com/watch?v=1lg_IvSnKBo&t=2s" 
+                src="https://www.youtube.com/embed/${project.videoId}" 
                 title="Project Demo Video"
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -175,6 +175,12 @@ function openModal(projectId) {
         modalVideoSection.style.display = 'block';
     } else {
         modalVideoSection.style.display = 'none';
+    }
+    
+    // Hide modal action buttons
+    const modalActions = document.getElementById('modalActions');
+    if (modalActions) {
+        modalActions.style.display = 'none';
     }
     
     // Show modal
