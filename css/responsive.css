@@ -296,6 +296,38 @@ button, .btn, a.btn, .nav-toggle, .social-link, .filter-btn {
         min-height: 48px;
     }
 
+    /* Modal Gallery - Mobile */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .gallery-title,
+    .video-title {
+        font-size: 1.25rem;
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+    }
+
+    .lightbox-close {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .lightbox-prev {
+        left: 1rem;
+    }
+
+    .lightbox-next {
+        right: 1rem;
+    }
+
     /* Footer - Mobile */
     .footer-content {
         grid-template-columns: 1fr;
@@ -587,6 +619,12 @@ button, .btn, a.btn, .nav-toggle, .social-link, .filter-btn {
     .modal-content {
         max-width: 900px;
         width: 90%;
+    }
+
+    /* Modal Gallery - Tablet */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     /* Footer - Desktop */
