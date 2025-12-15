@@ -56,84 +56,92 @@
 
         <section class="projects-section">
             <div class="container">
-                <div class="projects-grid">
+                <!-- Filter/Category Options -->
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-th"></i> All Projects
+                    </button>
+                    <button class="filter-btn" data-filter="web">
+                        <i class="fas fa-globe"></i> Web Development
+                    </button>
+                    <button class="filter-btn" data-filter="design">
+                        <i class="fas fa-paint-brush"></i> Design
+                    </button>
+                    <button class="filter-btn" data-filter="mobile">
+                        <i class="fas fa-mobile-alt"></i> Mobile
+                    </button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid" id="projectsGrid">
                     <!-- Project 1 -->
-                    <div class="project-card">
+                    <div class="project-card" data-category="web">
                         <div class="project-image-container">
-                            <img src="../images/project1.svg" alt="Project 1" class="project-image">
+                            <img src="../images/project1-16-9.svg" alt="Project 1 Screenshot" class="project-image">
                             <div class="project-overlay">
-                                <a href="#" class="project-link" aria-label="View Project 1">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+                                <button class="project-view-btn" data-project="1" aria-label="View Project 1 Details">
+                                    <i class="fas fa-eye"></i> Quick View
+                                </button>
                             </div>
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Project 1</h3>
                             <p class="project-description">
-                                A responsive web application built with HTML, CSS, and JavaScript. 
-                                This project demonstrates modern web development practices and 
-                                showcases clean, maintainable code structure.
+                                A responsive web application built with HTML, CSS, and JavaScript that demonstrates 
+                                modern web development practices. This project showcases clean, maintainable code 
+                                structure and implements best practices for user experience and accessibility.
                             </p>
                             <div class="project-tags">
                                 <span class="tag">HTML5</span>
                                 <span class="tag">CSS3</span>
                                 <span class="tag">JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="../images/project2.svg" alt="Project 2" class="project-image">
-                            <div class="project-overlay">
-                                <a href="#" class="project-link" aria-label="View Project 2">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Project 2</h3>
-                            <p class="project-description">
-                                An interactive portfolio website featuring smooth animations and 
-                                modern design principles. Built with a focus on user experience 
-                                and accessibility.
-                            </p>
-                            <div class="project-tags">
                                 <span class="tag">Responsive</span>
-                                <span class="tag">UI/UX</span>
-                                <span class="tag">CSS3</span>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="project-card">
-                        <div class="project-image-container">
-                            <img src="../images/project3.svg" alt="Project 3" class="project-image">
-                            <div class="project-overlay">
-                                <a href="#" class="project-link" aria-label="View Project 3">
-                                    <i class="fas fa-external-link-alt"></i>
+                            <div class="project-actions">
+                                <button class="btn btn-primary btn-sm view-details-btn" data-project="1">
+                                    <i class="fas fa-info-circle"></i> View Details
+                                </button>
+                                <a href="#" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
                                 </a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Project 3</h3>
-                            <p class="project-description">
-                                A dynamic web application with real-time features and modern 
-                                JavaScript functionality. Demonstrates advanced programming 
-                                concepts and best practices.
-                            </p>
-                            <div class="project-tags">
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">API</span>
-                                <span class="tag">Modern JS</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Project Modal -->
+        <div class="project-modal" id="projectModal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-body">
+                    <div class="modal-image-container">
+                        <img id="modalImage" src="" alt="Project Screenshot" class="modal-image">
+                    </div>
+                    <div class="modal-info">
+                        <h2 id="modalTitle" class="modal-title">Project Title</h2>
+                        <div class="modal-tags" id="modalTags"></div>
+                        <div class="modal-description" id="modalDescription"></div>
+                        <div class="modal-features">
+                            <h3>Key Features</h3>
+                            <ul id="modalFeatures"></ul>
+                        </div>
+                        <div class="modal-actions">
+                            <a href="#" id="modalLiveLink" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i> View Live Demo
+                            </a>
+                            <a href="#" id="modalGithubLink" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -181,6 +189,7 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script src="../js/projects.js"></script>
 </body>
 </html>
 
