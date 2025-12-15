@@ -104,8 +104,7 @@ function openModal(projectId) {
     });
     
     // Set links
-    document.getElementById('modalLiveLink').href = project.liveLink;
-    document.getElementById('modalGithubLink').href = project.githubLink;
+
     
     // Populate gallery
     const galleryGrid = document.getElementById('galleryGrid');
