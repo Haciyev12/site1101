@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact - Portfolio">
+    <title>Contact - Portfolio</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo" aria-label="Portfolio Home">Portfolio</a>
+            <button 
+                class="nav-toggle" 
+                id="navToggle" 
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="navMenu"
+                type="button">
+                <span class="sr-only">Menu</span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="../index.html" class="nav-link" role="menuitem">Home</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="about.html" class="nav-link" role="menuitem">About</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="projects.html" class="nav-link" role="menuitem">Projects</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="contact.html" class="nav-link active" role="menuitem" aria-current="page">Contact</a>
+                </li>
+                
+                <li class="nav-item nav-theme-toggle" role="none">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()" type="button">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun" style="display: none;"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Hero/Header Section -->
+        <section class="contact-hero">
+            <div class="container">
+                <h1 class="contact-title">Get In Touch</h1>
+                <p class="contact-subtitle">Have a question or want to work together? I'd love to hear from you.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <!-- Left Side - Contact Form (60%) -->
+                    <div class="contact-form-wrapper">
+                        <form id="contactForm" class="contact-form" role="form" aria-label="Contact form" novalidate>
+                            <!-- Success Message -->
+                            <div id="successMessage" class="form-message form-message-success" role="alert" aria-live="polite" style="display: none;">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Thank you! Your message has been sent.</span>
+                            </div>
+
+                            <!-- Error Message -->
+                            <div id="errorMessage" class="form-message form-message-error" role="alert" aria-live="polite" style="display: none;">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>Something went wrong. Please try again.</span>
+                            </div>
+
+                            <!-- Name Field -->
+                            <div class="form-group">
+                                <label for="name" class="form-label">
+                                    Name <span class="required" aria-label="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true"
+                                    aria-describedby="name-error"
+                                    autocomplete="name">
+                                <span id="name-error" class="error-message" role="alert" aria-live="polite"></span>
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="form-group">
+                                <label for="email" class="form-label">
+                                    Email <span class="required" aria-label="required">*</span>
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true"
+                                    aria-describedby="email-error"
+                                    autocomplete="email">
+                                <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
+                            </div>
+
+                            <!-- Subject Field -->
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input 
+                                    type="text" 
+                                    id="subject" 
+                                    name="subject" 
+                                    class="form-input"
+                                    aria-describedby="subject-error"
+                                    autocomplete="off">
+                                <span id="subject-error" class="error-message" role="alert" aria-live="polite"></span>
+                            </div>
+
+                            <!-- Message Field -->
+                            <div class="form-group">
+                                <label for="message" class="form-label">
+                                    Message <span class="required" aria-label="required">*</span>
+                                </label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    class="form-textarea" 
+                                    rows="6" 
+                                    required 
+                                    aria-required="true"
+                                    aria-describedby="message-error"
+                                    minlength="20"></textarea>
+                                <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary btn-submit" id="submitBtn" aria-label="Send message">
+                                <span class="btn-text">Send Message</span>
+                                <i class="fas fa-paper-plane btn-icon" aria-hidden="true"></i>
+                                <span class="btn-spinner" aria-hidden="true" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Right Side - Contact Information (40%) -->
+                    <div class="contact-info-wrapper">
+                        <!-- Email Card -->
+                        <div class="contact-info-card">
+                            <div class="contact-card-icon">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <h3 class="contact-card-label">Email</h3>
+                                <a href="mailto:amal.hajiyev@example.com" class="contact-card-value" aria-label="Send email to amal.hajiyev@example.com">
+                                    amal.hajiyev@example.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Location Card -->
+                        <div class="contact-info-card">
+                            <div class="contact-card-icon">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <h3 class="contact-card-label">Location</h3>
+                                <p class="contact-card-value">Baku, Azerbaijan</p>
+                            </div>
+                        </div>
+
+                        <!-- Social Media Card -->
+                        <div class="contact-info-card">
+                            <div class="contact-card-icon">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <h3 class="contact-card-label">Connect</h3>
+                                <div class="contact-social-links">
+                                    <a href="https://github.com/Haciyev12" target="_blank" rel="noopener noreferrer" class="contact-social-link" aria-label="GitHub Profile">
+                                        <i class="fab fa-github" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="https://www.codecademy.com/profiles/Haciyev12" target="_blank" rel="noopener noreferrer" class="contact-social-link" aria-label="Codecademy Profile">
+                                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/amal-haciyev-87922a367/" target="_blank" rel="noopener noreferrer" class="contact-social-link" aria-label="LinkedIn Profile">
+                                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p class="footer-about-text">
+                        A passionate web developer creating modern, responsive, and user-friendly web experiences. 
+                        Explore my projects and connect with me through the links below.
+                    </p>
+                    <div class="repo-link-wrapper">
+                        <a href="https://github.com/Haciyev12/site1101" target="_blank" rel="noopener noreferrer" class="repo-link">
+                            <i class="fab fa-github"></i> 
+                            <span>View Source Code</span>
+                            <i class="fas fa-external-link-alt repo-external-icon"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect Section -->
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <p class="footer-connect-text">Follow me on social media and connect with me:</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Haciyev12" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-link github">
+                            <i class="fab fa-github"></i>
+                            <span class="sr-only">GitHub</span>
+                        </a>
+                        <a href="https://www.codecademy.com/profiles/Haciyev12" target="_blank" rel="noopener noreferrer" aria-label="Codecademy Profile" class="social-link codecademy">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="sr-only">Codecademy</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/amal-haciyev-87922a367/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            <span class="sr-only">LinkedIn</span>
+                        </a>
+                        <a href="https://www.instagram.com/amal_haciyev05/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span class="sr-only">Instagram</span>
+                        </a>
+                        <a href="mailto:haciyevamal7@gmail.com" aria-label="Email" class="social-link email">
+                            <i class="fas fa-envelope"></i>
+                            <span class="sr-only">Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Amal Hajiyev. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/contact.js"></script>
+</body>
+</html>
+

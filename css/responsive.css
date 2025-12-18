@@ -430,6 +430,57 @@ button, .btn, a.btn, .nav-toggle, .social-link, .filter-btn {
     .activity-icon {
         font-size: 1.5rem;
     }
+
+    /* Contact Page - Mobile */
+    .contact-hero {
+        padding: 3rem 0 1.5rem;
+    }
+
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    .contact-subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.5rem;
+    }
+
+    .contact-info-wrapper {
+        gap: 1.25rem;
+    }
+
+    .contact-info-card {
+        padding: 1.25rem;
+    }
+
+    .contact-card-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .contact-card-icon i {
+        font-size: 20px;
+    }
+
+    .contact-social-links {
+        gap: 0.75rem;
+    }
+
+    .contact-social-link {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+    }
 }
 
 /* ============================================
@@ -548,6 +599,20 @@ button, .btn, a.btn, .nav-toggle, .social-link, .filter-btn {
     .timeline-marker {
         margin: 0 2rem;
     }
+
+    /* Contact Page - Tablet */
+    .contact-wrapper {
+        grid-template-columns: 50% 50%;
+        gap: 2rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.75rem;
+    }
+
+    .contact-info-card {
+        padding: 1.5rem;
+    }
 }
 
 /* ============================================
@@ -663,6 +728,16 @@ button, .btn, a.btn, .nav-toggle, .social-link, .filter-btn {
 
     .timeline-marker {
         margin: 0 2rem;
+    }
+
+    /* Contact Page - Desktop */
+    .contact-wrapper {
+        grid-template-columns: 60% 40%;
+        gap: 3rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 2rem;
     }
 }
 

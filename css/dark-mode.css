@@ -347,3 +347,78 @@ html.dark-mode .about-image-container {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
+/* Contact Page - Dark Mode */
+html.dark-mode .contact-section {
+    background-color: #0f172a;
+}
+
+html.dark-mode .contact-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+}
+
+html.dark-mode .contact-form-wrapper,
+html.dark-mode .contact-info-card {
+    background-color: #1e293b;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .form-label {
+    color: #f1f5f9;
+}
+
+html.dark-mode .form-input,
+html.dark-mode .form-textarea {
+    background-color: #1a1d2e;
+    color: #f1f5f9;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .form-input:focus,
+html.dark-mode .form-textarea:focus {
+    background-color: #1e293b;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+html.dark-mode .form-input.error,
+html.dark-mode .form-textarea.error {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+html.dark-mode .form-message-success {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border-color: #10b981;
+}
+
+html.dark-mode .form-message-error {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
+html.dark-mode .contact-card-label {
+    color: rgba(241, 245, 249, 0.7);
+}
+
+html.dark-mode .contact-card-value {
+    color: #f1f5f9;
+}
+
+html.dark-mode .contact-card-icon {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+html.dark-mode .contact-social-link {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #f1f5f9;
+}
+
+html.dark-mode .contact-social-link:hover {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+}
+
