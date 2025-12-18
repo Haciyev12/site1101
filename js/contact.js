@@ -162,44 +162,15 @@ document.addEventListener('DOMContentLoaded', () => {
         clearErrors();
     }
 
-    // Submit form to FormSubmit
-    async function submitForm(formData) {
-        try {
-            // Create FormData object for FormSubmit
-            const formDataToSend = new FormData();
-            formDataToSend.append('name', formData.name);
-            formDataToSend.append('email', formData.email);
-            formDataToSend.append('subject', formData.subject || 'No Subject');
-            formDataToSend.append('message', formData.message);
-            formDataToSend.append('_subject', 'New Contact Form Submission');
-            formDataToSend.append('_captcha', 'false');
-            
-            // Submit to FormSubmit
-            const response = await fetch('https://formsubmit.co/ajax/haciyevamal7@gmail.com', {
-                method: 'POST',
-                body: formDataToSend
-            });
-            
-            if (response.ok) {
-                return { success: true };
-            } else {
-                return { success: false, error: 'Failed to send message' };
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            return { success: false, error: error.message };
-        }
-    }
-
     // Handle form submission
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
+    form.addEventListener('submit', (e) => {
         // Clear previous messages
         clearErrors();
 
         // Validate form
         if (!validateForm()) {
+            // Prevent submission if validation fails
+            e.preventDefault();
             // Focus first error field
             const firstError = form.querySelector('.error');
             if (firstError) {
@@ -208,38 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Prepare form data
-        const formData = {
-            name: nameInput.value.trim(),
-            email: emailInput.value.trim(),
-            subject: subjectInput.value.trim(),
-            message: messageInput.value.trim()
-        };
-
+        // If validation passes, allow natural form submission to FormSubmit
         // Set loading state
         setLoading(true);
-
-        try {
-            // Submit form
-            const result = await submitForm(formData);
-
-            if (result.success) {
-                showSuccess();
-                clearForm();
-                
-                // Re-enable form after 3 seconds
-                setTimeout(() => {
-                    setLoading(false);
-                }, 3000);
-            } else {
-                showError();
-                setLoading(false);
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            showError();
-            setLoading(false);
-        }
     });
 
     // Real-time validation on blur
