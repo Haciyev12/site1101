@@ -481,6 +481,56 @@ button, .btn, a.btn, .nav-toggle, .social-link, .filter-btn {
         min-width: 44px;
         min-height: 44px;
     }
+
+    /* New Contact Page - Mobile */
+    .contact-hero-new {
+        padding: 4rem 0 2rem;
+    }
+
+    .contact-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .contact-hero-subtitle {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+
+    .contact-methods-section {
+        padding: 3rem 0;
+    }
+
+    .contact-methods-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-method-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-method-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .contact-method-icon i {
+        font-size: 2rem;
+    }
+
+    .contact-method-heading {
+        font-size: 1.5rem;
+    }
+
+    .contact-method-social-icons {
+        gap: 1rem;
+    }
+
+    .contact-social-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
 }
 
 /* ============================================
@@ -604,6 +654,28 @@ button, .btn, a.btn, .nav-toggle, .social-link, .filter-btn {
     .contact-wrapper {
         grid-template-columns: 50% 50%;
         gap: 2rem;
+    }
+
+    /* New Contact Page - Tablet */
+    .contact-hero-new {
+        padding: 5rem 0 3rem;
+    }
+
+    .contact-hero-title {
+        font-size: 3rem;
+    }
+
+    .contact-hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .contact-methods-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .contact-method-card {
+        padding: 2.5rem 2rem;
     }
 
     .contact-form-wrapper {

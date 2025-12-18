@@ -422,3 +422,44 @@ html.dark-mode .contact-social-link:hover {
     color: white;
 }
 
+/* New Contact Page - Dark Mode */
+html.dark-mode .contact-hero-new {
+    background: linear-gradient(135deg, #4c1d95 0%, #6b21a8 25%, #7c3aed 50%, #3b82f6 75%, #0ea5e9 100%);
+    background-size: 400% 400%;
+}
+
+html.dark-mode .contact-methods-section {
+    background-color: #0f172a;
+}
+
+html.dark-mode .contact-method-card {
+    background-color: #1e293b;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .contact-method-heading {
+    color: #f1f5f9;
+}
+
+html.dark-mode .contact-method-email {
+    color: #60a5fa;
+}
+
+html.dark-mode .contact-method-text {
+    color: rgba(241, 245, 249, 0.7);
+}
+
+html.dark-mode .contact-method-description {
+    color: rgba(241, 245, 249, 0.6);
+}
+
+html.dark-mode .contact-social-icon {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #f1f5f9;
+}
+
+html.dark-mode .contact-social-icon:hover {
+    border-color: var(--primary-color);
+}
+
