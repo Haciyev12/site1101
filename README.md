@@ -20,6 +20,7 @@ Website/
 ├── pages/
 │   ├── about.html      # About page
 │   ├── projects.html   # Projects page
+|   ├── contact.html   # Contact page
 ├── css/
 │   └── styles.css      # Main stylesheet
     └── dark-mode.css   # Applying dark and light mode
@@ -28,8 +29,8 @@ Website/
 │   └── main.js         # JavaScript functionality
 │   └── projects.js
 │   └── theme-toggle.js
+|   └── contact.js
 ├── images/
-│   ├── profile-placeholder.jpg
 │   ├── Me.jpg
 │   ├── and gate.jpg
 │   └── not gate.jpg
