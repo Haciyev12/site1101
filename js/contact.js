@@ -162,26 +162,33 @@ document.addEventListener('DOMContentLoaded', () => {
         clearErrors();
     }
 
-    // Simulate form submission (replace with actual API call)
+    // Submit form to FormSubmit
     async function submitForm(formData) {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Simulate success (in real implementation, check response)
-        // For demo purposes, always return success
-        return { success: true };
-        
-        // Real implementation would look like:
-        // try {
-        //     const response = await fetch('/api/contact', {
-        //         method: 'POST',
-        //         headers: { 'Content-Type': 'application/json' },
-        //         body: JSON.stringify(formData)
-        //     });
-        //     return await response.json();
-        // } catch (error) {
-        //     return { success: false, error: error.message };
-        // }
+        try {
+            // Create FormData object for FormSubmit
+            const formDataToSend = new FormData();
+            formDataToSend.append('name', formData.name);
+            formDataToSend.append('email', formData.email);
+            formDataToSend.append('subject', formData.subject || 'No Subject');
+            formDataToSend.append('message', formData.message);
+            formDataToSend.append('_subject', 'New Contact Form Submission');
+            formDataToSend.append('_captcha', 'false');
+            
+            // Submit to FormSubmit
+            const response = await fetch('https://formsubmit.co/ajax/haciyevamal7@gmail.com', {
+                method: 'POST',
+                body: formDataToSend
+            });
+            
+            if (response.ok) {
+                return { success: true };
+            } else {
+                return { success: false, error: 'Failed to send message' };
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            return { success: false, error: error.message };
+        }
     }
 
     // Handle form submission
